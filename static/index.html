@@ -1,0 +1,55 @@
+<!--
+ * @Date: 2016-05-25 15:49:21
+ * @Author: Yao guan shou
+ * @LastEditors: Yao guan shou
+ * @LastEditTime: 2022-03-10 14:52:50
+ * @FilePath: /sharedb-textarea-example/static/index.html
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- when using the mode "code", it's important to specify charset utf-8 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script src="client.built.js"></script>
+    <script src="textarea.js"></script>
+    <style>
+      #textarea {
+        width: 400px;
+        height: 200px;
+        border: 2px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="textarea"></textarea>
+    <script>
+      //连接地址
+      let url = "ws://192.168.208.13:8080";
+      var connection = new window.sharedb.Connection(new WebSocket(url));
+
+      var collection = "default";
+      var id = "document-10";
+      // id = id + Math.round(Math.random() * 1000);
+      var doc = connection.get(collection, id);
+      doc.subscribe(function (error) {
+        if (error) {
+          console.log("Failed to subscribe.", error);
+        }
+        if (!doc.type) {
+          console.log("creating");
+          var defaultData = "";
+          var ottype = ottext.type.name;
+          var source = true;
+          var callback = function () {
+            console.log(arguments);
+          };
+          doc.create(defaultData, ottype, source, callback);
+        }
+        var textarea = document.getElementById("textarea");
+        console.log('textarea=',doc)
+        attachTextarea(textarea, doc);
+      });
+    </script>
+  </body>
+</html>
