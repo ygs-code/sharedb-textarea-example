@@ -21,20 +21,34 @@
  *
  * This algorithm is O(N). I suspect you could speed it up somehow using regular expressions.
  */
-var applyChange = function (doc, oldval, newval) {
-  console.log('applyChange', doc, oldval, newval);
+// value 改变响应值
+
+
+var applyChange = function (
+  doc,  // 文档
+  oldval,  // 旧的文档
+  newval //新的值
+) {
+  console.log('applyChange');
+  console.log('doc=', doc, );
+  console.log('oldval', oldval,);
+  console.log('newval',  newval);
+ 
 
   // Strings are immutable and have reference equality. I think this test is O(1), so its worth doing.
   if (oldval === newval) return;
 
   var commonStart = 0;
+  // 计算前面有几个相同的字符串
   while (oldval.charAt(commonStart) === newval.charAt(commonStart)) {
+
     commonStart++;
   }
+  
 
   var commonEnd = 0;
   while (oldval.charAt(oldval.length - 1 - commonEnd) === newval.charAt(newval.length - 1 - commonEnd) &&
-      commonEnd + commonStart < oldval.length && commonEnd + commonStart < newval.length) {
+    commonEnd + commonStart < oldval.length && commonEnd + commonStart < newval.length) {
     commonEnd++;
   }
 
@@ -126,7 +140,7 @@ var attachTextarea = function (elem, doc) {
     replaceText(prev.slice(0, pos) + prev.slice(pos + length), transformCursor);
   };
 
-  var _updateField = function(fields, value) {
+  var _updateField = function (fields, value) {
     if (typeof value === 'number') {
       fields.pos = value;
     } else if (typeof value === 'string') {
@@ -141,7 +155,7 @@ var attachTextarea = function (elem, doc) {
     if (localContext === true) {
       return;
     }
-    var fields = {pos: 0, insertStr: '', delNum: 0};
+    var fields = { pos: 0, insertStr: '', delNum: 0 };
 
     for (var i = 0; i < op.length; i++) {
       _updateField(fields, op[i]);
@@ -168,16 +182,23 @@ var attachTextarea = function (elem, doc) {
     // In a timeout so the browser has time to propogate the event's changes to the DOM.
     setTimeout(function () {
       if (elem.value !== prevvalue) {
+        // 获取表单的值
         prevvalue = elem.value;
-        applyChange(doc, doc.data, elem.value.replace(/\r\n/g, '\n'));
+        applyChange(
+          doc,
+          doc.data,
+          elem.value.replace(/\r\n/g, '\n')
+        );
       }
     }, 0);
   };
 
   var eventNames = ['textInput', 'keydown', 'keyup', 'select', 'cut', 'paste'];
+  // 添加事件
   for (var i = 0; i < eventNames.length; i++) {
     var e = eventNames[i];
     if (elem.addEventListener) {
+      //
       elem.addEventListener(e, genOp, false);
     } else {
       elem.attachEvent('on' + e, genOp);

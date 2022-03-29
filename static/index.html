@@ -25,12 +25,13 @@
     <textarea id="textarea"></textarea>
     <script>
       //连接地址
-      let url = "ws://192.168.208.13:8080";
+      let url = "ws://127.0.0.1:8080";
       var connection = new window.sharedb.Connection(new WebSocket(url));
 
       var collection = "default";
       var id = "document-10";
       // id = id + Math.round(Math.random() * 1000);
+      console.log('connection=',connection)
       var doc = connection.get(collection, id);
       doc.subscribe(function (error) {
         if (error) {
