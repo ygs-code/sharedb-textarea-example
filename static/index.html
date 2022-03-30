@@ -2,7 +2,7 @@
  * @Date: 2016-05-25 15:49:21
  * @Author: Yao guan shou
  * @LastEditors: Yao guan shou
- * @LastEditTime: 2022-03-10 14:52:50
+ * @LastEditTime: 2022-03-30 17:52:35
  * @FilePath: /sharedb-textarea-example/static/index.html
  * @Description: 
 -->
@@ -11,7 +11,7 @@
   <head>
     <!-- when using the mode "code", it's important to specify charset utf-8 -->
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <script src="client.built.js"></script>
+    <script src="sharedbottext.js"></script>
     <script src="textarea.js"></script>
     <style>
       #textarea {
@@ -26,7 +26,8 @@
     <script>
       //连接地址
       let url = "ws://127.0.0.1:8080";
-      var connection = new window.sharedb.Connection(new WebSocket(url));
+      console.log('sharedbottext====',sharedbottext)
+      var connection = new sharedbottext.sharedb.Connection(new WebSocket(url));
 
       var collection = "default";
       var id = "document-10";
@@ -51,6 +52,7 @@
         console.log('textarea=',doc)
         attachTextarea(textarea, doc);
       });
+    
     </script>
   </body>
 </html>

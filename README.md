@@ -18,3 +18,8 @@ Sources:
 * ottypes https://github.com/ottypes/text
 * sharedb json example https://github.com/lubaochuan/sharedb_examples
 * sharejs textarea https://github.com/share/ShareJS/blob/master/lib/client/textarea.js
+
+
+
+# ShareDB with textarea 源码分析
+
