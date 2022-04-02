@@ -2,12 +2,12 @@
  * @Date: 2022-03-31 14:29:53
  * @Author: Yao guan shou
  * @LastEditors: Yao guan shou
- * @LastEditTime: 2022-03-31 14:30:20
+ * @LastEditTime: 2022-04-02 19:02:57
  * @FilePath: /sharedb-textarea-example/static/client.js
  * @Description: 
  */
  // //连接地址
-      let url = "ws://127.0.0.1:8080";
+      let url = "ws://127.0.0.1:8088";
       console.log('sharedbottext====',sharedbottext)
       var connection = new sharedbottext.sharedb.Connection(new WebSocket(url));
 

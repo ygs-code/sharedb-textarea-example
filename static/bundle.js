@@ -4776,7 +4776,7 @@ __webpack_require__.r(__webpack_exports__);
  * @Date: 2016-05-25 15:49:21
  * @Author: Yao guan shou
  * @LastEditors: Yao guan shou
- * @LastEditTime: 2022-03-31 14:29:08
+ * @LastEditTime: 2022-04-02 19:02:54
  * @FilePath: /sharedb-textarea-example/client.js
  * @Description:
  */
@@ -4794,8 +4794,8 @@ console.log("attachTextarea=", attachTextarea); // exports.sharedb = sharedb;
 
 window.onload = function () {
   //连接地址
-  var url = "ws://127.0.0.1:8080";
-  var socket = new reconnecting_websocket__WEBPACK_IMPORTED_MODULE_3__["default"]("ws://127.0.0.1:8080");
+  var url = "ws://127.0.0.1:8088";
+  var socket = new reconnecting_websocket__WEBPACK_IMPORTED_MODULE_3__["default"]("ws://127.0.0.1:8088");
   console.log("socket======");
   var connection = new sharedb_lib_client__WEBPACK_IMPORTED_MODULE_0__.Connection(socket);
   sharedb_lib_types__WEBPACK_IMPORTED_MODULE_2__.register((ot_text__WEBPACK_IMPORTED_MODULE_1___default().type));

@@ -1,3 +1,11 @@
+/*
+ * @Date: 2022-03-30 09:45:58
+ * @Author: Yao guan shou
+ * @LastEditors: Yao guan shou
+ * @LastEditTime: 2022-04-02 19:01:41
+ * @FilePath: /sharedb-textarea-example/server.js
+ * @Description: 
+ */
 //http
 var http = require("http");
 // ot
@@ -59,7 +67,7 @@ wss.on("connection", function (ws, req) {
 
   share.listen(stream);
 });
-var port = 8080;
+var port = 8088;
 server.listen(port, function () {
   return console.log("Listening on " + port);
 });
